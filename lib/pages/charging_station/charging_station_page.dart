@@ -342,7 +342,7 @@ class _ChargingStationPageState extends State<ChargingStationPage> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Container(
-                              height: 0,
+                              height: 85,
                               decoration: BoxDecoration(
                                 color: white,
                                 borderRadius: BorderRadius.circular(10),
