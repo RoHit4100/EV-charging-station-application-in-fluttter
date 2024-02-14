@@ -11,14 +11,14 @@ import 'dart:ui' as ui;
 import '../../utils/key.dart';
 import '../../utils/widgets.dart';
 
-class DirectionPage extends StatefulWidget {
-  const DirectionPage({Key? key}) : super(key: key);
+class DeliveryPage extends StatefulWidget {
+  const DeliveryPage({Key? key}) : super(key: key);
 
   @override
-  State<DirectionPage> createState() => _DirectionPageState();
+  State<DeliveryPage> createState() => _DeliveryPageState();
 }
 
-class _DirectionPageState extends State<DirectionPage> {
+class _DeliveryPageState extends State<DeliveryPage> {
   final List<LatLng> _latlng = [
     const LatLng(37.785591, -122.406331),
     const LatLng(37.764731, -122.390158),
@@ -148,54 +148,53 @@ class _DirectionPageState extends State<DirectionPage> {
                     points: polylineCoordinates),
               },
             ),
-            Positioned(
-              bottom: 20,
-              child: MyContainerWithChild(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 17, horizontal: 15),
-                height: 116,
-                width: 90.w,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        // Container(
-                        //   height: 82,
-                        //   width: 111,
-                        //   decoration: ,
-                        // ),
-                        const Icon(
-                          Icons.battery_1_bar_rounded,
-                          color: primaryColor,
-                          size: 40,
-                        ),
-                        widthSpace20,
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              AutoSizeText('Delivery Battery to My location',
-                                  style: blackBold18),
-                              heightSpace5,
-                              Text.rich(TextSpan(
-                                  text: '3 min',
-                                  style: primaryBold16,
-                                  children: [
-                                    TextSpan(
-                                        text: ' (700 M)', style: blackBold16)
-                                  ])),
-                              heightSpace5,
-                              Text('Open : 24 hr', style: dashLineSemiBold14)
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            )
+            // Positioned(
+            //   bottom: 20,
+            //   child: MyContainerWithChild(
+            //     padding:
+            //         const EdgeInsets.symmetric(vertical: 17, horizontal: 15),
+            //     height: 116,
+            //     width: 90.w,
+            //     child: Column(
+            //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //       children: [
+            //         Row(
+            //           children: [
+            //             Container(
+            //               height: 82,
+            //               width: 111,
+            //               decoration: BoxDecoration(
+            //                 borderRadius: BorderRadius.circular(5),
+            //                 image: const DecorationImage(
+            //                     fit: BoxFit.fill, image: AssetImage(carMain3)),
+            //               ),
+            //             ),
+            //             widthSpace20,
+            //             Expanded(
+            //               child: Column(
+            //                 crossAxisAlignment: CrossAxisAlignment.start,
+            //                 children: [
+            //                   AutoSizeText('Hp charging station',
+            //                       style: blackBold18),
+            //                   heightSpace5,
+            //                   Text.rich(TextSpan(
+            //                       text: '3 min',
+            //                       style: primaryBold16,
+            //                       children: [
+            //                         TextSpan(
+            //                             text: ' (700 M)', style: blackBold16)
+            //                       ])),
+            //                   heightSpace5,
+            //                   Text('Open : 24 hr', style: dashLineSemiBold14)
+            //                 ],
+            //               ),
+            //             )
+            //           ],
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // )
           ],
         ),
       )),

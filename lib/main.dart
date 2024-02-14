@@ -4,6 +4,7 @@ import 'package:fl_speedcharge/pages/auth/otp_page.dart';
 import 'package:fl_speedcharge/pages/auth/register_page.dart';
 import 'package:fl_speedcharge/pages/charging_station/charging_station_page.dart';
 import 'package:fl_speedcharge/pages/location/direction_page.dart';
+import 'package:fl_speedcharge/pages/location/delivery_page.dart';
 import 'package:fl_speedcharge/pages/location/route_search_page.dart';
 import 'package:fl_speedcharge/pages/notification/notification_page.dart';
 import 'package:fl_speedcharge/pages/on_boarding/on_boarding_page.dart';
@@ -135,7 +136,7 @@ class _MyAppState extends State<MyApp> {
                 case '/DeliveryPage':
                   return PageTransition(
                       isIos: true,
-                      child: const DirectionPage(),
+                      child: const DeliveryPage(),
                       type: PageTransitionType.rightToLeft);
                 case '/RouteSearchPage':
                   return PageTransition(
