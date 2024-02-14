@@ -132,6 +132,11 @@ class _MyAppState extends State<MyApp> {
                       isIos: true,
                       child: const DirectionPage(),
                       type: PageTransitionType.rightToLeft);
+                case '/DeliveryPage':
+                  return PageTransition(
+                      isIos: true,
+                      child: const DirectionPage(),
+                      type: PageTransitionType.rightToLeft);
                 case '/RouteSearchPage':
                   return PageTransition(
                       isIos: true,

@@ -1,4 +1,5 @@
 import 'package:fl_speedcharge/pages/booking/booking_slot_page.dart';
+import 'package:fl_speedcharge/pages/location/delivery_page.dart';
 import 'package:fl_speedcharge/utils/constant.dart';
 import 'package:fl_speedcharge/utils/widgets.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,6 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:sizer/sizer.dart';
-import 'delivery_page.dart';
 
 import '../../helper/language_constant.dart';
 
@@ -630,12 +630,21 @@ class _ChargingStationPageState extends State<ChargingStationPage> {
             )),
             widthSpace20,
             Expanded(
-                child: PrimaryButton(
-              onTap: () {
-                Navigator.pushNamed(context, '/DirectionPage');
-              },
-              title: translation(context).getDirection,
-            )),
+              child: PrimaryButton(
+                onTap: () {
+                  Navigator.pushNamed(context, '/DirectionPage');
+                },
+                title: "Direction",
+              ),
+            ),
+            widthSpace20,
+            Expanded(
+              child: PrimaryButton(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/DeliveryPage');
+                  },
+                  title: "Delivery"),
+            ),
           ],
         ),
       ),
