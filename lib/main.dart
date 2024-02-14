@@ -24,6 +24,8 @@ import 'package:flutter/services.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:fl_speedcharge/pages/booking/delivery_booking_page.dart';
+
 
 import 'bottom_navigation.dart';
 import 'helper/language_constant.dart';
@@ -143,6 +145,11 @@ class _MyAppState extends State<MyApp> {
                       isIos: true,
                       child: const RouteSearchPage(),
                       type: PageTransitionType.rightToLeft);
+                // case '/DeliveryBookingPage':
+                //   return PageTransition(
+                //       isIos: true,
+                //       child: const DeliveryBookingPage(carType: 'car'),
+                //       type: PageTransitionType.rightToLeft);
                 case '/NotificationPage':
                   return PageTransition(
                       isIos: true,
@@ -193,7 +200,7 @@ class _MyAppState extends State<MyApp> {
 }
 /*
 
- body: SingleChildScrollView(
+body: SingleChildScrollView(
         child: ListView(
           shrinkWrap: true,
           physics: NeverScrollableScrollPhysics(),

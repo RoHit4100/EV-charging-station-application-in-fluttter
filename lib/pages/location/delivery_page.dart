@@ -1,9 +1,11 @@
 import 'dart:async';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:fl_speedcharge/pages/booking/delivery_booking_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:sizer/sizer.dart';
 import '../../utils/constant.dart';
 import 'dart:ui' as ui;
@@ -148,53 +150,61 @@ class _DeliveryPageState extends State<DeliveryPage> {
                     points: polylineCoordinates),
               },
             ),
-            // Positioned(
-            //   bottom: 20,
-            //   child: MyContainerWithChild(
-            //     padding:
-            //         const EdgeInsets.symmetric(vertical: 17, horizontal: 15),
-            //     height: 116,
-            //     width: 90.w,
-            //     child: Column(
-            //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //       children: [
-            //         Row(
-            //           children: [
-            //             Container(
-            //               height: 82,
-            //               width: 111,
-            //               decoration: BoxDecoration(
-            //                 borderRadius: BorderRadius.circular(5),
-            //                 image: const DecorationImage(
-            //                     fit: BoxFit.fill, image: AssetImage(carMain3)),
-            //               ),
-            //             ),
-            //             widthSpace20,
-            //             Expanded(
-            //               child: Column(
-            //                 crossAxisAlignment: CrossAxisAlignment.start,
-            //                 children: [
-            //                   AutoSizeText('Hp charging station',
-            //                       style: blackBold18),
-            //                   heightSpace5,
-            //                   Text.rich(TextSpan(
-            //                       text: '3 min',
-            //                       style: primaryBold16,
-            //                       children: [
-            //                         TextSpan(
-            //                             text: ' (700 M)', style: blackBold16)
-            //                       ])),
-            //                   heightSpace5,
-            //                   Text('Open : 24 hr', style: dashLineSemiBold14)
-            //                 ],
-            //               ),
-            //             )
-            //           ],
-            //         ),
-            //       ],
-            //     ),
-            //   ),
-            // )
+            Positioned(
+              bottom: 20,
+              child: MyContainerWithChild(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 17, horizontal: 15),
+                height: 111,
+                width: 70.w,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          height: 50,
+                          width: 50,
+                          child: IconButton(
+                            iconSize: 40,
+                            icon: const Icon(Icons.ads_click_outlined),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  PageTransition(
+                                      isIos: true,
+                                      child: const DeliveryBookingPage(vehicleType: 'car'),
+                                      type: PageTransitionType.rightToLeft));
+                                    },
+                            ),
+                        ),
+                        widthSpace20,
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              AutoSizeText('Delivery Battery Here',
+                                  style: blackBold18),
+                              heightSpace5,
+                              Text.rich(TextSpan(
+                                  text: '3 min',
+                                  style: primaryBold16,
+                                  children: [
+                                    TextSpan(
+                                        text: ' (700 M)', style: blackBold16)
+                                  ])),
+                              heightSpace5,
+                              Text('At least 15 min to deliver',
+                                  style: dashLineSemiBold14)
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            )
           ],
         ),
       )),
