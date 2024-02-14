@@ -24,7 +24,6 @@ import 'package:flutter/services.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:fl_speedcharge/pages/booking/delivery_booking_page.dart';
 
 
 import 'bottom_navigation.dart';

@@ -8,7 +8,6 @@ import 'package:sizer/sizer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -16,39 +15,76 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
-
-
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController _phoneNumberController = TextEditingController();
   // String initialCountry = 'NG';
   PhoneNumber number = PhoneNumber(isoCode: 'IN');
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: <String>[
+    'email',
+    'https://www.googleapis.com/auth/contacts.readonly',
+  ]);
+
+  late GoogleSignInAccount currentUser;
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _googleSignIn.onCurrentUserChanged.listen((account) {
+  //     setState(() {
+  //       currentUser = account!;
+  //     });
+  //     if (currentUser != null) {
+  //       print(
+  //           "User is already authenticated as ${currentUser}"); // ignore: avoid_print
+  //     }
+  //     _googleSignIn.signInSilently();
+  //   });
+
   Future<UserCredential?> _signInWithGoogle() async {
-  // Trigger the Google Authentication flow
-  final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+    // Trigger the Google Authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
-  if (googleUser != null) {
-    // Obtain the auth details from the request
-    final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+    if (googleUser != null) {
+      // Obtain the auth details from the request
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
 
-    // Create a new credential
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
-    );
+      // Create a new credential
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
 
-    // Sign in to Firebase with the credential
-    return await _auth.signInWithCredential(credential);
+      // Sign in to Firebase with the credential
+      return await _auth.signInWithCredential(credential);
+    }
+
+    return null;
   }
-
-  return null;
-}
 
   @override
   void dispose() {
     _phoneNumberController.dispose();
     super.dispose();
+  }
+
+  Future<void> handleSignIn() async {
+    // Trigger the Google Authentication flow
+    try {
+      await _googleSignIn.signIn();
+    } catch (error) {
+      print(error);
+    } finally {
+      if (_googleSignIn.currentUser != null) {
+        print("User is already authenticated as ${_googleSignIn.currentUser}");
+      }
+    }
+  }
+
+  Future<void> handleSignOut() async {
+    _googleSignIn.disconnect();
   }
 
   @override
@@ -154,7 +190,7 @@ class _LoginPageState extends State<LoginPage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              SizedBox(height: 2.h, child: Image.asset(google)),
+                              //SizedBox(height: 2.h, child: Image.asset(google)),
                               widthSpace10,
                               // Text(
                               //   translation(context).google,
@@ -164,9 +200,13 @@ class _LoginPageState extends State<LoginPage> {
                                 title: translation(context).login1,
                                 onTap: () async {
                                   Navigator.pushNamed(context, '/RegisterPage');
-                                  final UserCredential? userCredential = await _signInWithGoogle();
+                                  final UserCredential? userCredential =
+                                      await _signInWithGoogle();
                                   if (userCredential != null) {
                                     // User signed in with Google
+                                    // ignore: use_build_context_synchronously
+                                    Navigator.pushReplacement(
+                                        Navigator.pushNamed(context, '/BottomNavigation');
                                   }
                                 },
                               ),
@@ -187,5 +227,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
 
-
-
+final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: <String>[
+  'email',
+  'https://www.googleapis.com/auth/contacts.readonly',
+]);
