@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fl_speedcharge/helper/ui_helper.dart';
+import 'package:fl_speedcharge/pages/auth/login_page.dart';
 import 'package:fl_speedcharge/utils/constant.dart';
 import 'package:fl_speedcharge/utils/widgets.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +14,6 @@ import '../../helper/language_constant.dart';
 
 class OtpPage extends StatefulWidget {
   const OtpPage({Key? key}) : super(key: key);
-
   @override
   State<OtpPage> createState() => _OtpPageState();
 }
@@ -54,7 +55,7 @@ final submittedPinTheme = defaultPinTheme.copyWith(
 class _OtpPageState extends State<OtpPage> {
   final String mobileNumber = '+91(1234567890)';
   final TextEditingController pinController = TextEditingController();
-
+  String code = '';
   @override
   void dispose() {
     pinController.dispose();
@@ -63,6 +64,8 @@ class _OtpPageState extends State<OtpPage> {
 
   @override
   Widget build(BuildContext context) {
+    final FirebaseAuth auth = FirebaseAuth.instance;
+
     return Scaffold(
       appBar: const PreferredSize(
           preferredSize: Size.fromHeight(56), child: MyAppBar()),
@@ -97,6 +100,11 @@ class _OtpPageState extends State<OtpPage> {
                 // validator: (s) {
                 //   return s == '2222' ? null : translation(context).pinIncorrect;
                 // },
+                onChanged: (String value) {
+                  setState(() {
+                    code = value;
+                  });
+                } ,
                 pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
                 showCursor: true,
                 onCompleted: (pin) {
@@ -137,7 +145,13 @@ class _OtpPageState extends State<OtpPage> {
             heightSpace30,
             PrimaryButton(
               title: translation(context).verify,
-              onTap: () {
+              onTap: () async {
+                PhoneAuthCredential credential = PhoneAuthProvider.credential(
+                    verificationId: LoginPage.verify, smsCode: smsCode);
+
+                // Sign the user in (or link) with the credential
+                await auth.signInWithCredential(credential);
+
                 UiHelper.showLoadingDialog(
                     context, translation(context).pleaseWait);
                 Timer(const Duration(seconds: 3), () {

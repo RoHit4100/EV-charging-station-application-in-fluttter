@@ -4,13 +4,12 @@ import 'package:fl_speedcharge/utils/constant.dart';
 import 'package:fl_speedcharge/utils/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
-import 'package:sizer/sizer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
-
+  static String verify = '';
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
@@ -19,6 +18,7 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _phoneNumberController = TextEditingController();
   // String initialCountry = 'NG';
   PhoneNumber number = PhoneNumber(isoCode: 'IN');
+
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: <String>[
@@ -120,11 +120,10 @@ class _LoginPageState extends State<LoginPage> {
                     margin: const EdgeInsets.symmetric(vertical: 10),
                     padding: const EdgeInsets.symmetric(vertical: 3),
                     child: InternationalPhoneNumberInput(
-                      onInputChanged: (PhoneNumber number) {
-                        // print(number.phoneNumber);
-                      },
+                      onInputChanged: (PhoneNumber number) {},
                       onInputValidated: (bool value) {
-                        // print(value);
+                        var phone = value ? number.phoneNumber : '';
+                        print(phone);
                       },
                       selectorConfig: const SelectorConfig(
                         selectorType: PhoneInputSelectorType.DROPDOWN,
@@ -139,7 +138,9 @@ class _LoginPageState extends State<LoginPage> {
                       formatInput: false,
                       keyboardType: const TextInputType.numberWithOptions(),
                       inputBorder: InputBorder.none,
-                      onSaved: (PhoneNumber number) {},
+                      onSaved: (PhoneNumber number) {
+                        var phone = number.phoneNumber;
+                      },
                       hintText: translation(context).enterMobileNo,
                       spaceBetweenSelectorAndTextField: 5,
                       textStyle: dashLineSemiBold16,
@@ -152,8 +153,18 @@ class _LoginPageState extends State<LoginPage> {
                   heightSpace50,
                   PrimaryButton(
                     title: translation(context).login1,
-                    onTap: () {
-                      Navigator.pushNamed(context, '/RegisterPage');
+                    onTap: () async {
+                      await FirebaseAuth.instance.verifyPhoneNumber(
+                        phoneNumber: '+91${_phoneNumberController.text}',
+                        verificationCompleted:
+                            (PhoneAuthCredential credential) {},
+                        verificationFailed: (FirebaseAuthException e) {},
+                        codeSent: (verificationId, int? resendToken) {
+                          LoginPage.verify = verificationId;
+                          Navigator.pushNamed(context, '/RegisterPage');
+                        },
+                        codeAutoRetrievalTimeout: (verificationId) {},
+                      );
                     },
                   ),
                   heightSpace50,
@@ -174,43 +185,38 @@ class _LoginPageState extends State<LoginPage> {
                   heightSpace40,
                   Row(
                     children: [
-                      widthSpace20,
+                      widthSpace5,
                       Expanded(
-                        child: Container(
-                          height: 5.5.h,
-                          decoration: BoxDecoration(
-                              color: const Color(0xffFA4335),
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
-                                BoxShadow(
-                                  blurRadius: 6,
-                                  color: colorForShadow,
-                                ),
-                              ]),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              //SizedBox(height: 2.h, child: Image.asset(google)),
-                              widthSpace10,
-                              // Text(
-                              //   translation(context).google,
-                              //   style: whiteExtraBold16,
-                              // )
-                              PrimaryButton(
-                                title: translation(context).login1,
-                                onTap: () async {
-                                  Navigator.pushNamed(context, '/RegisterPage');
-                                  final UserCredential? userCredential =
-                                      await _signInWithGoogle();
-                                  if (userCredential != null) {
-                                    // User signed in with Google
-                                    // ignore: use_build_context_synchronously
-                                    Navigator.pushReplacement(
-                                        Navigator.pushNamed(context, '/BottomNavigation');
-                                  }
-                                },
+                        child: SizedBox(
+                          width: 130,
+                          height: 60,
+                          child: ElevatedButton.icon(
+                            style: ElevatedButton.styleFrom(
+                              primary: Color.fromARGB(255, 47, 70, 139),
+                              onPrimary: const Color.fromARGB(255, 0, 0, 0),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
                               ),
-                            ],
+                            ),
+                            icon: const Icon(
+                              Icons.arrow_circle_right,
+                              size: 30,
+                            ), // Add the required 'icon' argument here
+                            label: Image.asset(google),
+                            onPressed: () async {
+                              Navigator.pushNamed(context, '/RegisterPage');
+                              try {
+                                final UserCredential? userCredential =
+                                    await _signInWithGoogle();
+                                if (userCredential != null) {
+                                  // ignore: use_build_context_synchronously
+                                  Navigator.pushNamed(
+                                      context, '/BottomNavigation');
+                                }
+                              } catch (error) {
+                                print("Error during Google Sign-In: $error");
+                              }
+                            },
                           ),
                         ),
                       )
@@ -227,7 +233,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
 
-final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: <String>[
-  'email',
-  'https://www.googleapis.com/auth/contacts.readonly',
-]);
+// final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: <String>[
+//   'email',
+//   'https://www.googleapis.com/auth/contacts.readonly',
+// ]);

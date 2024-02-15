@@ -16,8 +16,8 @@ import '../../helper/language_constant.dart';
 import '../charging_station/charging_station_page.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
-
+  const HomePage({Key? key, }) : super(key: key);
+  
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -163,6 +163,7 @@ List _stationList = [
 ];
 
 class _HomePageState extends State<HomePage> {
+  
   final PageController _pageController = PageController();
   final Completer<GoogleMapController> googleMapController = Completer();
   static const CameraPosition _sourceLocation =
@@ -462,7 +463,7 @@ class _HomePageState extends State<HomePage> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('Arshan Patil', style: blackBold17),
+                            Text('Rohit Udamale', style: blackBold17),
                             Text(
                               translation(context).findNearest,
                               style: TextStyle(

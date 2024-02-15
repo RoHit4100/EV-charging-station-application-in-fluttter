@@ -1,4 +1,3 @@
-import 'package:fl_speedcharge/utils/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -25,7 +24,7 @@ class _GoogleSignInPage extends State<GoogleSignInPage> {
         currentUser = account!;
       });
       if (currentUser != null) {
-        print(
+        print(  
             "User is already authenticated as ${currentUser}"); // ignore: avoid_print
       }
       _googleSignIn.signInSilently();
@@ -49,44 +48,44 @@ class _GoogleSignInPage extends State<GoogleSignInPage> {
     _googleSignIn.disconnect();
   }
 
-  Widget buildBody(context) {
-    GoogleSignInAccount user = currentUser;
-    if (user != null) {
-      return Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: <Widget>[
-          ListTile(
-            leading: GoogleUserCircleAvatar(
-              identity: user,
-            ),
-            title: Text(user.displayName ?? ''),
-            subtitle: Text(user.email),
-          ),
-          ElevatedButton(
-            onPressed: handleSignOut,
-            child: const Text('SIGN OUT'),
-          ),
-        ],
-      );
-    } else {
-      Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: <Widget>[
-          ElevatedButton(
-            onPressed: handleSignIn,
-            child: const Text('SIGN IN'),
-          ),
-        ],
-      );
-    }
-  }
+  // Widget buildBody(context) {
+  //   GoogleSignInAccount user = currentUser;
+  //   if (user != null) {
+  //     return Column(
+  //       mainAxisAlignment: MainAxisAlignment.spaceAround,
+  //       children: <Widget>[
+  //         ListTile(
+  //           leading: GoogleUserCircleAvatar(
+  //             identity: user,
+  //           ),
+  //           title: Text(user.displayName ?? ''),
+  //           subtitle: Text(user.email),
+  //         ),
+  //         ElevatedButton(
+  //           onPressed: handleSignOut,
+  //           child: const Text('SIGN OUT'),
+  //         ),
+  //       ],
+  //     );
+  //   } else {
+  //     Column(
+  //       mainAxisAlignment: MainAxisAlignment.spaceAround,
+  //       children: <Widget>[
+  //         ElevatedButton(
+  //           onPressed: handleSignIn,
+  //           child: const Text('SIGN IN'),
+  //         ),
+  //       ],
+  //     );
+  //   }
+  // }
 
   @override
   Widget build(context) {
     return Scaffold(
       body: ConstrainedBox(
         constraints: const BoxConstraints.expand(),
-        child: buildBody(context),
+        // child: buildBody(context),
       ) 
     );
   }
