@@ -146,18 +146,26 @@ class _OtpPageState extends State<OtpPage> {
             PrimaryButton(
               title: translation(context).verify,
               onTap: () async {
-                PhoneAuthCredential credential = PhoneAuthProvider.credential(
-                    verificationId: LoginPage.verify, smsCode: smsCode);
+                try {
+                  PhoneAuthCredential credential = PhoneAuthProvider.credential(
+                  verificationId: LoginPage.verify, smsCode: code);
 
-                // Sign the user in (or link) with the credential
-                await auth.signInWithCredential(credential);
+                  // Sign the user in (or link) with the credential
+                  await auth.signInWithCredential(credential);
+                  
 
-                UiHelper.showLoadingDialog(
-                    context, translation(context).pleaseWait);
-                Timer(const Duration(seconds: 3), () {
-                  Navigator.popUntil(context, (route) => route.isFirst);
-                  Navigator.pushReplacementNamed(context, '/BottomNavigation');
-                });
+                  // ignore: use_build_context_synchronously
+                  UiHelper.showLoadingDialog(
+                      // ignore: use_build_context_synchronously
+                      context, translation(context).pleaseWait);
+                  Timer(const Duration(seconds: 3), () {
+                    Navigator.popUntil(context, (route) => route.isFirst);
+                    Navigator.pushReplacementNamed(
+                        context, '/BottomNavigation');
+                  });
+                } catch (e) {
+                  print(e);
+                }
               },
             ),
             heightSpace15,

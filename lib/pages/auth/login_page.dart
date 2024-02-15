@@ -10,6 +10,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
   static String verify = '';
+  static String uName = '';
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
