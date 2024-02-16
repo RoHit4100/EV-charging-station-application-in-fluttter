@@ -15,11 +15,11 @@ class EditProfilePage extends StatefulWidget {
 
 class _EditProfilePageState extends State<EditProfilePage> {
   final TextEditingController _nameController =
-      TextEditingController(text: 'Arshan Patil');
+      TextEditingController(text: 'Rohit Udamale');
   final TextEditingController _emailController =
-      TextEditingController(text: 'arshanpatil@example.com');
+      TextEditingController(text: 'rohitlu20comp@student.mes.ac.in');
   final TextEditingController _mobileNumberController =
-      TextEditingController(text: '+911234567890');
+      TextEditingController(text: '+919373369378');
 
   @override
   void dispose() {

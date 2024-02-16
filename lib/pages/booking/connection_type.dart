@@ -82,7 +82,7 @@ class _ConnectionTypeState extends State<ConnectionType> {
                             // print(e['label']);
                             Navigator.pop(context, e['label']);
                           },
-                          height: 117,
+                          height: 125,
                           // width: 117,
                           padding: const EdgeInsets.symmetric(
                               vertical: 11, horizontal: 20),

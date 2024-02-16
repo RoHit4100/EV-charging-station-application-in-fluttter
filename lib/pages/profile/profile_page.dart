@@ -109,10 +109,10 @@ class ProfilePage extends StatelessWidget {
                   child: Image.asset(homeProfile),
                 ),
                 heightSpace10,
-                Text('Arshan Patil',
+                Text('Rohit Udamale',
                     style: blackBold18, textAlign: TextAlign.center),
                 heightSpace5,
-                Text('+91(1234567890)',
+                Text('+91 9373369378',
                     style: dashLineSemiBold14, textAlign: TextAlign.center),
                 ListView.separated(
                   padding: const EdgeInsets.only(top: 25),

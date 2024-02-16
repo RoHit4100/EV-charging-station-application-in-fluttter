@@ -17,13 +17,18 @@ class _PaymentOptionPageState extends State<PaymentOptionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter Buttons and Label'),
+        title: const Text('Payment options'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Color.fromARGB(255, 116, 121, 148),
+                  textStyle: const TextStyle(fontSize: 25),
+                  foregroundColor: Colors.white,
+                  fixedSize: const Size(290, 70)),
               onPressed: () {
                 setState(() {
                   Navigator.push(
@@ -38,6 +43,11 @@ class _PaymentOptionPageState extends State<PaymentOptionPage> {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Color.fromARGB(235, 61, 69, 124),
+                  textStyle: const TextStyle(fontSize: 25),
+                  foregroundColor: Colors.white,
+                  fixedSize: const Size(340, 70)),
               onPressed: () {
                 Navigator.push(
                     context,
@@ -49,10 +59,6 @@ class _PaymentOptionPageState extends State<PaymentOptionPage> {
               child: const Text('Payment with Razorpay'),
             ),
             const SizedBox(height: 20),
-            const Text(
-              "Payment with Wallets",
-              style: TextStyle(fontSize: 18),
-            ),
           ],
         ),
       ),

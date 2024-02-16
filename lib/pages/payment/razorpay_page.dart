@@ -1,5 +1,7 @@
+import 'package:fl_speedcharge/pages/payment/payment_success_page.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 
@@ -36,9 +38,18 @@ class _RazorPayPageState extends State<RazorPayPage> {
   }
 
   void handlePaymentSuccess(PaymentSuccessResponse response) {
+
     Fluttertoast.showToast(
         msg: "Payment Successful ${response.paymentId}",
         toastLength: Toast.LENGTH_SHORT);
+    // Navigator.pushReplacementNamed(context, '/BottomNavigation');
+    Navigator.popUntil(context, (route) => route.isFirst);
+    Navigator.pushReplacement(
+        context,
+        PageTransition(
+            isIos: true,
+            child: PaymentSuccessPage(vehicleType: widget.vehicleType),
+            type: PageTransitionType.rightToLeft));
     ;
   }
 
@@ -78,18 +89,13 @@ class _RazorPayPageState extends State<RazorPayPage> {
           children: [
             const SizedBox(
               height: 100,
-            ),
-            Image.network(
-              'https://media.geeksforgeeks.org/wp-content/cdn-uploads/20200817185016/gfg_complete_logo_2x-min.png',
-              height: 100,
-              width: 300,
             ), //Image.network
 
             const SizedBox(
               height: 10,
             ),
             const Text(
-              "Welcome to Razorpay Payment Gateway Integration",
+              "Welcome to Razorpay Pay",
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -105,6 +111,7 @@ class _RazorPayPageState extends State<RazorPayPage> {
                 cursorColor: Colors.white,
                 autofocus: false,
                 style: const TextStyle(color: Colors.white),
+                keyboardType: TextInputType.number,
                 decoration: const InputDecoration(
                     labelText: 'Enter Amount to be paid',
                     labelStyle: TextStyle(fontSize: 15.0, color: Colors.white),
