@@ -13,12 +13,17 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+
   final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _mobileNumberController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final arguments = (ModalRoute.of(context)?.settings.arguments ??
+        <String, dynamic>{}) as Map;
+    // ignore: no_leading_underscores_for_local_identifiers
+    final TextEditingController _mobileNumberController = TextEditingController(text: arguments['mobileNumber'] ?? '');
+
     return Scaffold(
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(56),

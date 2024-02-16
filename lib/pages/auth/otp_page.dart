@@ -53,7 +53,7 @@ final submittedPinTheme = defaultPinTheme.copyWith(
 );
 
 class _OtpPageState extends State<OtpPage> {
-  final String mobileNumber = '+91(1234567890)';
+  // final String mobileNumber = '+91(1234567890)';
   final TextEditingController pinController = TextEditingController();
   String code = '';
   @override
@@ -77,7 +77,7 @@ class _OtpPageState extends State<OtpPage> {
           children: [
             heightSpace10,
             Text(
-              translation(context).otpVeriTitle,
+              'Confirmation code has been sent to to your mobile no +919373369378',
               style: blackBold25,
               textAlign: TextAlign.center,
             ),
@@ -93,7 +93,7 @@ class _OtpPageState extends State<OtpPage> {
             heightSpace30,
             Pinput(
                 controller: pinController,
-                length: 4,
+                length: 6,
                 defaultPinTheme: defaultPinTheme,
                 focusedPinTheme: focusedPinTheme,
                 submittedPinTheme: submittedPinTheme,

@@ -1,5 +1,4 @@
 import 'package:fl_speedcharge/pages/booking/booking_slot_page.dart';
-import 'package:fl_speedcharge/pages/location/delivery_page.dart';
 import 'package:fl_speedcharge/utils/constant.dart';
 import 'package:fl_speedcharge/utils/widgets.dart';
 import 'package:flutter/material.dart';

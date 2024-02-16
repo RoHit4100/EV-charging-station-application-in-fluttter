@@ -46,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
   Future<UserCredential?> _signInWithGoogle() async {
     // Trigger the Google Authentication flow
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
+    final int phone;
     if (googleUser != null) {
       // Obtain the auth details from the request
       final GoogleSignInAuthentication googleAuth =
@@ -140,7 +140,7 @@ class _LoginPageState extends State<LoginPage> {
                       keyboardType: const TextInputType.numberWithOptions(),
                       inputBorder: InputBorder.none,
                       onSaved: (PhoneNumber number) {
-                        var phone = number.phoneNumber;
+                        print('On Saved: $number');
                       },
                       hintText: translation(context).enterMobileNo,
                       spaceBetweenSelectorAndTextField: 5,
@@ -155,14 +155,19 @@ class _LoginPageState extends State<LoginPage> {
                   PrimaryButton(
                     title: translation(context).login1,
                     onTap: () async {
+                      print('Phone number: ${_phoneNumberController.text}');
                       await FirebaseAuth.instance.verifyPhoneNumber(
                         phoneNumber: '+91${_phoneNumberController.text}',
                         verificationCompleted:
                             (PhoneAuthCredential credential) {},
-                        verificationFailed: (FirebaseAuthException e) {},
+                        verificationFailed: (FirebaseAuthException e) {
+                          print('Error message: ${e.message}');
+                        },
                         codeSent: (verificationId, int? resendToken) {
                           LoginPage.verify = verificationId;
-                          Navigator.pushNamed(context, '/RegisterPage');
+                          Navigator.pushNamed(context, '/RegisterPage', arguments: {
+                            'phone': _phoneNumberController.text,
+                          });
                         },
                         codeAutoRetrievalTimeout: (verificationId) {},
                       );

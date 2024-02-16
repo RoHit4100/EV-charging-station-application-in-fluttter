@@ -6,8 +6,9 @@ import 'package:page_transition/page_transition.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../helper/language_constant.dart';
-import '../payment/payment_page.dart';
+// import '../payment/payment_page.dart';
 import '../../utils/widgets.dart';
+import '../payment/payment_option_page.dart';
 
 class BookingConfirmationPage extends StatelessWidget {
   final String vehicleType;
@@ -170,8 +171,9 @@ class BookingConfirmationPage extends StatelessWidget {
                       context,
                       PageTransition(
                           isIos: true,
-                          child: PaymentPage(vehicleType: vehicleType),
-                          type: PageTransitionType.rightToLeft));
+                          child: PaymentOptionPage(vehicleType: vehicleType),
+                          type: PageTransitionType.rightToLeft)
+                          );
                 },
               ),
             )
