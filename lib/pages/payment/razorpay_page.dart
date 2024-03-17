@@ -50,7 +50,6 @@ class _RazorPayPageState extends State<RazorPayPage> {
             isIos: true,
             child: PaymentSuccessPage(vehicleType: widget.vehicleType),
             type: PageTransitionType.rightToLeft));
-    ;
   }
 
   void handlePaymentError(PaymentFailureResponse response) {

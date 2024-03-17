@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:fl_speedcharge/api/firebase_api.dart';
 import 'package:fl_speedcharge/pages/auth/login_page.dart';
 import 'package:fl_speedcharge/pages/auth/otp_page.dart';
 import 'package:fl_speedcharge/pages/auth/register_page.dart';
@@ -24,7 +25,7 @@ import 'package:flutter/services.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+// import "api/firebase_api.dart";
 
 import 'bottom_navigation.dart';
 import 'helper/language_constant.dart';
@@ -32,6 +33,8 @@ import 'helper/language_constant.dart';
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  // Call the initNotifications method
+  await FirebaseApi().initializeFirebase();
   runApp(const MyApp());
 }
 

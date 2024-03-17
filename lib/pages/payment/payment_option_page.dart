@@ -25,7 +25,7 @@ class _PaymentOptionPageState extends State<PaymentOptionPage> {
           children: <Widget>[
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(255, 116, 121, 148),
+                  backgroundColor: const Color.fromARGB(255, 116, 121, 148),
                   textStyle: const TextStyle(fontSize: 25),
                   foregroundColor: Colors.white,
                   fixedSize: const Size(290, 70)),
@@ -44,7 +44,7 @@ class _PaymentOptionPageState extends State<PaymentOptionPage> {
             const SizedBox(height: 20),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                  backgroundColor: Color.fromARGB(235, 61, 69, 124),
+                  backgroundColor: const Color.fromARGB(235, 61, 69, 124),
                   textStyle: const TextStyle(fontSize: 25),
                   foregroundColor: Colors.white,
                   fixedSize: const Size(340, 70)),

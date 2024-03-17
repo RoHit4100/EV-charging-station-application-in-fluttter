@@ -162,7 +162,7 @@ class _DeliveryPageState extends State<DeliveryPage> {
                   children: [
                     Row(
                       children: [
-                        Container(
+                        SizedBox(
                           height: 50,
                           width: 50,
                           child: IconButton(
