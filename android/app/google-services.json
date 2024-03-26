@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "858786542446",
+    "project_id": "speedcharge-412914",
+    "storage_bucket": "speedcharge-412914.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:858786542446:android:69380aa047e2ba59b9077f",
+        "android_client_info": {
+          "package_name": "com.example.fl_speedcharge"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOHG9wWomUlPVKcwzrwHWzrwFuM0H46Tk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
