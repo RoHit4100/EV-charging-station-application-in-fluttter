@@ -98,7 +98,7 @@ class _RazorPayPageState extends State<RazorPayPage> {
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  fontSize: 18),
+                  fontSize: 28),
               textAlign: TextAlign.center,
             ),
             const SizedBox(
@@ -143,7 +143,14 @@ class _RazorPayPageState extends State<RazorPayPage> {
               style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
               child: const Padding(
                 padding: EdgeInsets.all(8.0),
-                child: Text('Make Payment'),
+                child: Text(
+                  'Make Payment',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18
+                  ),
+                ),
               ),
             ),
           ],

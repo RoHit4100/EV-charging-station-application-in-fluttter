@@ -28,7 +28,7 @@ class _PaymentOptionPageState extends State<PaymentOptionPage> {
                   backgroundColor: const Color.fromARGB(255, 116, 121, 148),
                   textStyle: const TextStyle(fontSize: 25),
                   foregroundColor: Colors.white,
-                  fixedSize: const Size(290, 70)),
+                  fixedSize: const Size(250, 50)),
               onPressed: () {
                 setState(() {
                   Navigator.push(
@@ -47,7 +47,7 @@ class _PaymentOptionPageState extends State<PaymentOptionPage> {
                   backgroundColor: const Color.fromARGB(235, 61, 69, 124),
                   textStyle: const TextStyle(fontSize: 25),
                   foregroundColor: Colors.white,
-                  fixedSize: const Size(340, 70)),
+                  fixedSize: const Size(280, 55)),
               onPressed: () {
                 Navigator.push(
                     context,
