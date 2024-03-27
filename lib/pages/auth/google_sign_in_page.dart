@@ -24,8 +24,7 @@ class _GoogleSignInPage extends State<GoogleSignInPage> {
         currentUser = account!;
       });
       if (currentUser != null) {
-        print(  
-            "User is already authenticated as ${currentUser}"); // ignore: avoid_print
+        ("User is already authenticated as ${currentUser}"); // ignore: avoid_print
       }
       _googleSignIn.signInSilently();
     });

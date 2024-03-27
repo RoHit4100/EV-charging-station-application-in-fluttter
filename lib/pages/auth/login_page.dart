@@ -46,7 +46,6 @@ class _LoginPageState extends State<LoginPage> {
   Future<UserCredential?> _signInWithGoogle() async {
     // Trigger the Google Authentication flow
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-    final int phone;
     if (googleUser != null) {
       // Obtain the auth details from the request
       final GoogleSignInAuthentication googleAuth =
@@ -79,7 +78,7 @@ class _LoginPageState extends State<LoginPage> {
       print(error);
     } finally {
       if (_googleSignIn.currentUser != null) {
-        print("User is already authenticated as ${_googleSignIn.currentUser}");
+        ("User is already authenticated as ${_googleSignIn.currentUser}");
       }
     }
   }
