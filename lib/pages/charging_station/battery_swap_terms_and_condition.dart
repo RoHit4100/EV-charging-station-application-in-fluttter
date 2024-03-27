@@ -1,5 +1,6 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
-import 'BatteryOptionsScreen .dart';
+import 'battery_options_screen.dart';
 
 class BatterySwapTermsAndCondition extends StatelessWidget {
   final String termsAndConditions = '''
@@ -41,7 +42,7 @@ class BatterySwapTermsAndCondition extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => BatteryOptionsScreen()),
+                  MaterialPageRoute(builder: (context) => const BatteryOptionsScreen()),
                 );
               },
               child: const Text('Accept and Continue'),

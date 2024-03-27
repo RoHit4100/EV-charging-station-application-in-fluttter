@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:fl_speedcharge/pages/payment/payment_option_page.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
@@ -12,7 +13,10 @@ class BatteryOption {
 }
 
 class BatteryOptionsScreen extends StatefulWidget {
+  const BatteryOptionsScreen({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _BatteryOptionsScreenState createState() => _BatteryOptionsScreenState();
 }
 

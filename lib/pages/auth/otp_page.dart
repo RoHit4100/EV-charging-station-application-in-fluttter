@@ -164,7 +164,7 @@ class _OtpPageState extends State<OtpPage> {
                         context, '/BottomNavigation');
                   });
                 } catch (e) {
-                  print(e);
+                  (e);
                 }
               },
             ),

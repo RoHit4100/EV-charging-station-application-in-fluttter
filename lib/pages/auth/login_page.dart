@@ -75,7 +75,7 @@ class _LoginPageState extends State<LoginPage> {
     try {
       await _googleSignIn.signIn();
     } catch (error) {
-      print(error);
+      (error);
     } finally {
       if (_googleSignIn.currentUser != null) {
         ("User is already authenticated as ${_googleSignIn.currentUser}");
@@ -123,7 +123,7 @@ class _LoginPageState extends State<LoginPage> {
                       onInputChanged: (PhoneNumber number) {},
                       onInputValidated: (bool value) {
                         var phone = value ? number.phoneNumber : '';
-                        print(phone);
+                        (phone);
                       },
                       selectorConfig: const SelectorConfig(
                         selectorType: PhoneInputSelectorType.DROPDOWN,
@@ -139,7 +139,7 @@ class _LoginPageState extends State<LoginPage> {
                       keyboardType: const TextInputType.numberWithOptions(),
                       inputBorder: InputBorder.none,
                       onSaved: (PhoneNumber number) {
-                        print('On Saved: $number');
+                        ('On Saved: $number');
                       },
                       hintText: translation(context).enterMobileNo,
                       spaceBetweenSelectorAndTextField: 5,
@@ -154,13 +154,13 @@ class _LoginPageState extends State<LoginPage> {
                   PrimaryButton(
                     title: translation(context).login1,
                     onTap: () async {
-                      print('Phone number: ${_phoneNumberController.text}');
+                      ('Phone number: ${_phoneNumberController.text}');
                       await FirebaseAuth.instance.verifyPhoneNumber(
                         phoneNumber: '+91${_phoneNumberController.text}',
                         verificationCompleted:
-                            (PhoneAuthCredential credential) {},
+                          (PhoneAuthCredential credential) {},
                         verificationFailed: (FirebaseAuthException e) {
-                          print('Error message: ${e.message}');
+                          ('Error message: ${e.message}');
                         },
                         codeSent: (verificationId, int? resendToken) {
                           LoginPage.verify = verificationId;
@@ -197,8 +197,8 @@ class _LoginPageState extends State<LoginPage> {
                           height: 60,
                           child: ElevatedButton.icon(
                             style: ElevatedButton.styleFrom(
-                              primary: Color.fromARGB(255, 47, 70, 139),
-                              onPrimary: const Color.fromARGB(255, 0, 0, 0),
+                              foregroundColor: const Color.fromARGB(255, 0, 0, 0), 
+                              backgroundColor: const Color.fromARGB(255, 47, 70, 139),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
@@ -219,7 +219,7 @@ class _LoginPageState extends State<LoginPage> {
                                       context, '/BottomNavigation');
                                 }
                               } catch (error) {
-                                print("Error during Google Sign-In: $error");
+                                ("Error during Google Sign-In: $error");
                               }
                             },
                           ),

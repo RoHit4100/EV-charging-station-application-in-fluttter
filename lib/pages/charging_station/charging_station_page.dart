@@ -10,7 +10,7 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../helper/language_constant.dart';
-import 'BatterySwapTermsAndCondition.dart';
+import 'battery_swap_terms_and_condition.dart';
 
 class ChargingStationPage extends StatefulWidget {
   final String vehicleType;

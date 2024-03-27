@@ -10,7 +10,7 @@ class TermsAndConditionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List termsConditionList = [
-      '1. Use of the App:\nThis application (\"the App\") is provided for locating electric vehicle charging stations. By using this App, you agree to comply with these terms and conditions.',
+      '1. Use of the App:\nThis application EVCS is provided for locating electric vehicle charging stations. By using this App, you agree to comply with these terms and conditions.',
       '2. Registration:\nTo use the App, you may be required to register an account. You agree to provide accurate and complete information during the registration process.',
       "3. Accuracy of Information:\nWe strive to provide accurate information about charging stations, but we cannot guarantee its accuracy or completeness. Users are advised to verify station availability and compatibility.",
       '4. User Conduct:\nYou agree to use the App in a manner that is lawful and respectful of others. Do not engage in any activity that may harm the App or its users.',
