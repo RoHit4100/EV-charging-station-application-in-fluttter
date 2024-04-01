@@ -155,7 +155,8 @@ class _NotificationPageState extends State<NotificationPage> {
                             blurRadius: 4,
                             spreadRadius: 0,
                             offset: const Offset(0, 0)),
-                      ]),
+                      ]
+                    ),
                   child: Row(
                     children: [
                       Container(

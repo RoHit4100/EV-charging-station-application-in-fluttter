@@ -77,7 +77,7 @@ class _OtpPageState extends State<OtpPage> {
           children: [
             heightSpace10,
             Text(
-              'Confirmation code has been sent to to your mobile no +919373369378',
+              'Confirmation code has been sent to to your mobile no +91 7774802356',
               style: blackBold25,
               textAlign: TextAlign.center,
             ),
